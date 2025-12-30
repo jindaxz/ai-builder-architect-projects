@@ -1,0 +1,43 @@
+[
+  {
+    "title": "Unsupervised Template-assisted Point Cloud Shape Correspondence Network",
+    "link": null,
+    "session": "Poster Session 2 & Exhibit Hall",
+    "authors": [
+      "Jiacheng Deng",
+      "Jiahao Lu",
+      "Tianzhu Zhang"
+    ],
+    "location": "Arch 4A-E Poster #40",
+    "highlight": false
+  },
+  {
+    "title": "X-3D: Explicit 3D Structure Modeling for Point Cloud Recognition",
+    "link": "https://github.com/sunshuofeng/X-3D",
+    "session": "Poster Session 2 & Exhibit Hall",
+    "authors": [
+      "Shuofeng Sun",
+      "Yongming Rao",
+      "Jiwen Lu",
+      "Haibin Yan"
+    ],
+    "location": "Arch 4A-E Poster #23",
+    "highlight": false
+  },
+  {
+    "title": "Spectral and Polarization Vision: Spectro-polarimetric Real-world Dataset",
+    "link": null,
+    "session": "Poster Session 5 & Exhibit Hall",
+    "authors": [
+      "Yujin Jeon",
+      "Eunsue Choi",
+      "Youngchan Kim",
+      "Yunseong Moon",
+      "Khalid Omer",
+      "Felix Heide",
+      "Seung-Hwan Baek"
+    ],
+    "location": "Arch 4A-E Poster #245",
+    "highlight": true
+  }
+]
