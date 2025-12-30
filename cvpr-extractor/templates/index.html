@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CVPR Extractor Demo</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f7fb;
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 32px 16px 48px;
+      }
+      h1 {
+        margin-bottom: 16px;
+      }
+      form {
+        background: #fff;
+        padding: 16px;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        align-items: flex-end;
+      }
+      label {
+        display: flex;
+        flex-direction: column;
+        font-size: 0.9rem;
+        color: #333;
+      }
+      input {
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        min-width: 120px;
+      }
+      button {
+        padding: 10px 18px;
+        background: #1b427d;
+        border: none;
+        border-radius: 4px;
+        color: #fff;
+        cursor: pointer;
+      }
+      .error {
+        background: #ffefef;
+        border: 1px solid #ffa0a0;
+        color: #a01313;
+        padding: 12px;
+        margin-top: 16px;
+        border-radius: 6px;
+      }
+      .results {
+        margin-top: 24px;
+      }
+      .paper {
+        background: #fff;
+        border-radius: 8px;
+        padding: 16px;
+        margin-bottom: 12px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      }
+      .meta {
+        font-size: 0.9rem;
+        color: #555;
+        margin: 4px 0;
+      }
+      .highlight {
+        color: #e27900;
+        font-weight: bold;
+      }
+      .badge {
+        display: inline-block;
+        background: #e6ecff;
+        color: #1b427d;
+        padding: 2px 8px;
+        border-radius: 12px;
+        font-size: 0.75rem;
+        margin-left: 8px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>CVPR Extractor Demo</h1>
+      <p>
+        Fetch accepted CVPR papers directly from the official site, filter by
+        keyword, and preview the output. Each run also writes
+        <code>{{ json_path or "cvpr_<year>_accepted.json" }}</code> to disk so
+        you can reuse the structured data elsewhere.
+      </p>
+      <form method="post">
+        <label>
+          Year
+          <input type="text" name="year" value="{{ year }}" />
+        </label>
+        <label>
+          Keyword (optional)
+          <input type="text" name="keyword" value="{{ keyword }}" />
+        </label>
+        <label>
+          Limit (optional)
+          <input type="text" name="limit" value="{{ limit }}" />
+        </label>
+        <button type="submit">Fetch Papers</button>
+      </form>
+
+      {% if error %}
+      <div class="error">{{ error }}</div>
+      {% endif %}
+
+      {% if papers %}
+      <div class="results">
+        <p>
+          Showing {{ count }} paper(s). Saved JSON to
+          <strong>{{ json_path }}</strong>.
+        </p>
+        {% for paper in papers %}
+        <div class="paper">
+          <h3>
+            {{ loop.index }}. {{ paper.title }}
+            {% if paper.highlight %}
+            <span class="badge">Highlight</span>
+            {% endif %}
+          </h3>
+          {% if paper.link %}
+          <div class="meta">
+            Link:
+            <a href="{{ paper.link }}" target="_blank" rel="noopener"
+              >{{ paper.link }}</a
+            >
+          </div>
+          {% endif %}
+          {% if paper.session %}
+          <div class="meta">Session: {{ paper.session }}</div>
+          {% endif %}
+          {% if paper.location %}
+          <div class="meta">Location: {{ paper.location }}</div>
+          {% endif %}
+          {% if paper.authors %}
+          <div class="meta">Authors: {{ ", ".join(paper.authors) }}</div>
+          {% endif %}
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+    </div>
+  </body>
+</html>

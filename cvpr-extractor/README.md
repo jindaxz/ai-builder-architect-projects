@@ -1,8 +1,12 @@
 # CVPR Extractor Demo
 
-快速脚本示例，可以从 CVPR 官方网站的 “Accepted Papers” 页面下载并解析最新会议（默认 2024 年）的论文信息。输出内容包含标题、作者、分会场/展位信息等，支持关键字过滤，并会自动把结果保存到 `cvpr_<year>_accepted.json`，方便在 1 月 17 日前展示一个可运行的 demo。
+This repository contains a quick demo that downloads the CVPR “Accepted Papers” page (default year 2024), parses every entry, and exports structured data including title, authors, session, and poster location. Results are automatically saved to `cvpr_<year>_accepted.json`, making it easy to show a working prototype ahead of the January 17 deadline.
 
-## 快速开始
+## Demo
+
+![CVPR Extractor Demo](res/image.png)
+
+## Quick Start
 
 ```bash
 python3 -m venv .venv
@@ -11,15 +15,26 @@ pip install -r requirements.txt
 python cvpr_extractor.py --year 2024 --limit 5
 ```
 
-如果你只需要包含某个关键字（例如 diffusion）的论文，脚本会保存默认 JSON 并打印到终端；也可以额外指定文件名：
+Need to focus on a specific topic (for example “diffusion”)? Pass a keyword to filter server-side results. You can also override the JSON filename if you want to archive multiple runs:
 
 ```bash
 python cvpr_extractor.py --keyword diffusion --limit 20 --json diffusion.json
 ```
 
-若只想看输出而不落盘，追加 `--no-json`。
+Add `--no-json` if you only want to print to the console without saving a file.
 
-## 输出示例
+## Simple Web Front-End
+
+Prefer a browser UI instead of the CLI? Launch the Flask app and open it locally:
+
+```bash
+export FLASK_APP=web_app.py  # or run `python web_app.py`
+flask run
+```
+
+The page lets you enter the year/keyword/limit, fetch papers from the official CVPR site, preview the results, and automatically saves the JSON file for reuse.
+
+## Sample Output
 
 ```
 1. Guided Slot Attention for Unsupervised Video Object Segmentation
@@ -30,9 +45,11 @@ python cvpr_extractor.py --keyword diffusion --limit 20 --json diffusion.json
 Displayed 1 records.
 ```
 
-## 工作流概览
+## Workflow Overview
 
-- `cvpr_extractor.py`：核心脚本，负责下载 CVPR 页面、解析 HTML、提取结构化数据，并提供简单的 CLI 参数（年份、关键字、数量限制、JSON 导出）。
-- `requirements.txt`：运行脚本的最小依赖（`requests` + `beautifulsoup4`）。
+- `cvpr_extractor.py`: core scraper; fetches CVPR HTML, parses each row, exposes CLI options for year, keyword, limit, and JSON export.
+- `gui_app.py`: minimal Tkinter wrapper so you can enter year/keyword in a GUI and see formatted results; run `python gui_app.py` to launch (it also saves the JSON automatically).
+- `web_app.py` + `templates/index.html`: lightweight Flask front-end that renders a simple form + results list in the browser; run with `flask run` or `python web_app.py`.
+- `requirements.txt`: minimal dependencies (`requests` and `beautifulsoup4`).
 
-下一步可以将 JSON 上传到数据库或前端，或者把脚本封装成 API/定时任务，根据项目 1 的展示要求调整输出即可。
+Next steps for the broader project could include piping the JSON into a database, feeding it to a front-end, or wrapping the extractor in an API/cron job—adjust as needed for Project 1’s deliverables.
