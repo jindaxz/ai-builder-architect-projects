@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Instagram Image Downloader</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+    <script src="{{ url_for('static', filename='app.js') }}" defer></script>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="panel">
+        <header>
+          <p class="eyebrow">📸 项目2</p>
+          <h1>Instagram 图片下载器</h1>
+          <p class="lede">
+            输入任意公开 Instagram 账户和要拉取的最新帖子数量，我们会打包成 zip 文件供你下载。
+          </p>
+        </header>
+
+        <form id="download-form" novalidate>
+          <label class="field">
+            <span>Instagram 用户名</span>
+            <input
+              type="text"
+              name="username"
+              placeholder="例如：natgeo"
+              autocomplete="off"
+              required
+            />
+          </label>
+
+          <label class="field">
+            <span>下载帖子数量 (1-50)</span>
+            <input
+              type="number"
+              name="max_posts"
+              value="12"
+              min="1"
+              max="50"
+              required
+            />
+          </label>
+
+          <button type="submit">开始下载</button>
+        </form>
+
+        <p class="helper">
+          仅支持公开账户。若需要访问更多内容，可在启动服务前通过环境变量设置 Instagram
+          凭据。
+        </p>
+
+        <div id="status" role="status" aria-live="polite"></div>
+      </section>
+    </main>
+  </body>
+</html>

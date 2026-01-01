@@ -1,0 +1,18 @@
+# Python cache/virtualenv
+__pycache__/
+*.py[cod]
+*.pyo
+.Python
+.venv/
+venv/
+
+# Environment / local config
+.env
+.DS_Store
+
+# Editor artifacts
+.idea/
+.vscode/
+
+# Generated data
+cvpr_*_accepted.json

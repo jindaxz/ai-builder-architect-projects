@@ -2,9 +2,13 @@
 
 This repository contains a quick demo that downloads the CVPR “Accepted Papers” page (default year 2024), parses every entry, and exports structured data including title, authors, session, and poster location. Results are automatically saved to `cvpr_<year>_accepted.json`, making it easy to show a working prototype ahead of the January 17 deadline.
 
-## Demo
+## Demo GUI
 
 ![CVPR Extractor Demo](res/image.png)
+
+## Demo Web App
+
+![CVPR Extractor Web App Demo](res/image%20copy.png)
 
 ## Quick Start
 

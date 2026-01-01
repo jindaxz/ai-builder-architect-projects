@@ -148,5 +148,158 @@
     ],
     "location": "Arch 4A-E Poster #83",
     "highlight": false
+  },
+  {
+    "title": "ToonerGAN: Reinforcing GANs for Obfuscating Automated Facial Indexing",
+    "link": null,
+    "session": "Poster Session 3 & Exhibit Hall",
+    "authors": [
+      "Kartik Thakral",
+      "Shashikant Prasad",
+      "Stuti Aswani",
+      "Mayank Vatsa",
+      "Richa Singh"
+    ],
+    "location": "Arch 4A-E Poster #118",
+    "highlight": false
+  },
+  {
+    "title": "UniBind: LLM-Augmented Unified and Balanced Representation Space to Bind Them All",
+    "link": null,
+    "session": "Poster Session 6 & Exhibit Hall",
+    "authors": [
+      "Yuanhuiyi Lyu",
+      "Xu Zheng",
+      "Jiazhou Zhou",
+      "Addison, Lin Wang"
+    ],
+    "location": "Arch 4A-E Poster #251",
+    "highlight": false
+  },
+  {
+    "title": "Robust Synthetic-to-Real Transfer for Stereo Matching",
+    "link": null,
+    "session": "Poster Session 5 & Exhibit Hall",
+    "authors": [
+      "Jiawei Zhang",
+      "Jiahe Li",
+      "Lei Huang",
+      "Xiaohan Yu",
+      "Lin Gu",
+      "Jin Zheng",
+      "Xiao Bai"
+    ],
+    "location": "Arch 4A-E Poster #69",
+    "highlight": false
+  },
+  {
+    "title": "Learning Intra-view and Cross-view Geometric Knowledge for Stereo Matching",
+    "link": null,
+    "session": "Poster Session 5 & Exhibit Hall",
+    "authors": [
+      "Rui Gong",
+      "Weide Liu",
+      "ZAIWANG GU",
+      "Xulei Yang",
+      "Jun Cheng"
+    ],
+    "location": "Arch 4A-E Poster #116",
+    "highlight": false
+  },
+  {
+    "title": "Understanding and Improving Source-free Domain Adaptation from a Theoretical Perspective",
+    "link": "https://github.com/nttcslab/improved_sfda",
+    "session": "Poster Session 6 & Exhibit Hall",
+    "authors": [
+      "Yu Mitsuzumi",
+      "Akisato Kimura",
+      "Hisashi Kashima"
+    ],
+    "location": "Arch 4A-E Poster #421",
+    "highlight": false
+  },
+  {
+    "title": "From Isolated Islands to Pangea: Unifying Semantic Space for Human Action Understanding",
+    "link": null,
+    "session": "Poster Session 4 & Exhibit Hall",
+    "authors": [
+      "Yonglu Li",
+      "Xiaoqian Wu",
+      "Xinpeng Liu",
+      "Zehao Wang",
+      "Yiming Dou",
+      "Yikun Ji",
+      "Junyi Zhang",
+      "Yixing Li",
+      "Xudong LU",
+      "Jingru Tan",
+      "Cewu Lu"
+    ],
+    "location": "Arch 4A-E Poster #193",
+    "highlight": true
+  },
+  {
+    "title": "Binding Touch to Everything: Learning Unified Multimodal Tactile Representations",
+    "link": null,
+    "session": "Poster Session 6 & Exhibit Hall",
+    "authors": [
+      "Fengyu Yang",
+      "Chao Feng",
+      "Ziyang Chen",
+      "Hyoungseob Park",
+      "Daniel Wang",
+      "Yiming Dou",
+      "Ziyao Zeng",
+      "xien chen",
+      "Suchisrit Gangopadhyay",
+      "Andrew Owens",
+      "Alex Wong"
+    ],
+    "location": "Arch 4A-E Poster #213",
+    "highlight": false
+  },
+  {
+    "title": "Putting the Object Back into Video Object Segmentation",
+    "link": "https://hkchengrex.com/Cutie/",
+    "session": "Poster Session 1 & Exhibit Hall",
+    "authors": [
+      "Ho Kei Cheng",
+      "Seoung Wug Oh",
+      "Brian Price",
+      "Joon-Young Lee",
+      "Alexander G. Schwing"
+    ],
+    "location": "Arch 4A-E Poster #291",
+    "highlight": true
+  },
+  {
+    "title": "Splatter Image: Ultra-Fast Single-View 3D Reconstruction",
+    "link": null,
+    "session": "Poster Session 3 & Exhibit Hall",
+    "authors": [
+      "Stanislaw Szymanowicz",
+      "Christian Rupprecht",
+      "Andrea Vedaldi"
+    ],
+    "location": "Arch 4A-E Poster #52",
+    "highlight": false
+  },
+  {
+    "title": "LowRankOcc: Tensor Decomposition and Low-Rank Recovery for Vision-based 3D Semantic Occupancy Prediction",
+    "link": null,
+    "session": "Poster Session 3 & Exhibit Hall",
+    "authors": [
+      "Linqing Zhao",
+      "Xiuwei Xu",
+      "Ziwei Wang",
+      "Yunpeng Zhang",
+      "Borui Zhang",
+      "Wenzhao Zheng",
+      "Dalong Du",
+      "Jie Zhou",
+      "Jiwen Lu"
+    ],
+    "location": "Arch 4A-E Poster #16",
+    "highlight": false
   }
 ]
