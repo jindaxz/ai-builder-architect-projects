@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Search Enhancer</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+    }
+
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #f4f5f7;
+      color: #222;
+    }
+
+    .page {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.4rem;
+    }
+
+    header p {
+      margin: 10px 0 0;
+      color: #555;
+    }
+
+    form {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+
+    input[type="text"] {
+      flex: 1;
+      min-width: 240px;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid #d0d7de;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 14px 24px;
+      border-radius: 12px;
+      border: none;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: opacity 0.2s ease;
+    }
+
+    button[disabled] {
+      opacity: 0.6;
+      cursor: not-allowed;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08);
+      margin-bottom: 20px;
+    }
+
+    .status {
+      margin-bottom: 12px;
+      font-size: 0.95rem;
+      color: #555;
+    }
+
+    .summary h2 {
+      margin-top: 0;
+    }
+
+    .results-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .results-list li {
+      padding: 12px 0;
+      border-bottom: 1px solid #ececec;
+    }
+
+    .results-list li:last-child {
+      border-bottom: none;
+    }
+
+    .results-list a {
+      font-weight: 600;
+      color: #2c3e50;
+      text-decoration: none;
+    }
+
+    .summary pre {
+      background: #1e1e2f;
+      color: #f9fafb;
+      padding: 16px;
+      border-radius: 12px;
+      white-space: pre-wrap;
+      line-height: 1.6;
+      margin: 0;
+    }
+
+    .error {
+      color: #c0392b;
+    }
+
+    .meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 20px;
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 12px;
+    }
+
+    .hint {
+      margin-top: -8px;
+      margin-bottom: 16px;
+      font-size: 0.9rem;
+      color: #666;
+      text-align: center;
+    }
+
+    @media (max-width: 540px) {
+      button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <h1>🤖 AI Search Enhancer</h1>
+      <p>This demo ships with preloaded research-style sources. Try keywords like “quantum computing breakthroughs” or “AI governance roadmap” to see how Ollama summarizes them.</p>
+    </header>
+
+    <form id="search-form">
+      <input type="text" id="query" placeholder="Try “latest breakthroughs in quantum computing”" required>
+      <button type="submit">Summarize</button>
+    </form>
+
+    <p class="hint">Demo-only data: different queries reuse the same curated sources, but snippets adapt to your text.</p>
+
+    <div id="status" class="status"></div>
+
+    <div id="results"></div>
+  </div>
+
+  <script>
+    const form = document.getElementById('search-form');
+    const queryInput = document.getElementById('query');
+    const statusEl = document.getElementById('status');
+    const resultsEl = document.getElementById('results');
+
+    function setStatus(message, isError = false) {
+      statusEl.textContent = message;
+      statusEl.classList.toggle('error', isError);
+    }
+
+    function renderSummary(data) {
+      resultsEl.innerHTML = '';
+
+      if (!data.success) {
+        setStatus(data.error || 'Failed to generate summary', true);
+        return;
+      }
+
+      setStatus(`✅ Analyzed ${data.num_results} curated demo sources with ${data.model}`);
+
+      const summaryCard = document.createElement('div');
+      summaryCard.className = 'card summary';
+      summaryCard.innerHTML = `
+        <div class="meta">
+          <span>Query: <strong>${data.query}</strong></span>
+          <span>Model: <strong>${data.model}</strong></span>
+        </div>
+        <pre>${data.summary}</pre>
+      `;
+
+      const listCard = document.createElement('div');
+      listCard.className = 'card';
+      listCard.innerHTML = '<h3>Sources</h3>';
+
+      const list = document.createElement('ul');
+      list.className = 'results-list';
+
+      data.results.forEach((result) => {
+        const item = document.createElement('li');
+        item.innerHTML = `
+          <a href="${result.url}" target="_blank" rel="noopener noreferrer">${result.title}</a>
+          <p>${result.snippet}</p>
+        `;
+        list.appendChild(item);
+      });
+
+      listCard.appendChild(list);
+
+      resultsEl.appendChild(summaryCard);
+      resultsEl.appendChild(listCard);
+    }
+
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const query = queryInput.value.trim();
+      if (!query) {
+        setStatus('Please enter a query', true);
+        return;
+      }
+
+      setStatus('⏳ Searching Google and generating summary...');
+      resultsEl.innerHTML = '';
+      const button = form.querySelector('button');
+      button.disabled = true;
+
+      try {
+        const response = await fetch('/search', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ query })
+        });
+
+        const data = await response.json();
+        renderSummary(data);
+      } catch (error) {
+        console.error(error);
+        setStatus('Failed to reach the server. Is it running?', true);
+      } finally {
+        button.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>

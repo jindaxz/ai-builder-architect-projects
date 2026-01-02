@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI Search Enhancer - Installation</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    .header {
+      text-align: center;
+      color: white;
+      margin-bottom: 40px;
+    }
+
+    .header h1 {
+      font-size: 48px;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 20px;
+      opacity: 0.9;
+    }
+
+    .card {
+      background: white;
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 30px;
+      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .card h2 {
+      font-size: 28px;
+      margin-bottom: 20px;
+      color: #333;
+    }
+
+    .card h3 {
+      font-size: 20px;
+      margin: 30px 0 15px;
+      color: #555;
+    }
+
+    .bookmarklet-box {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      border: 3px dashed #fff;
+      border-radius: 12px;
+      padding: 30px;
+      text-align: center;
+      margin: 30px 0;
+    }
+
+    .bookmarklet-link {
+      display: inline-block;
+      background: white;
+      color: #667eea;
+      text-decoration: none;
+      padding: 16px 32px;
+      border-radius: 8px;
+      font-size: 20px;
+      font-weight: 600;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: transform 0.2s;
+      cursor: move;
+    }
+
+    .bookmarklet-link:hover {
+      transform: scale(1.05);
+    }
+
+    .instruction {
+      color: white;
+      margin-top: 15px;
+      font-size: 16px;
+    }
+
+    .step {
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      padding: 20px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+
+    .step h4 {
+      color: #667eea;
+      margin-bottom: 10px;
+      font-size: 18px;
+    }
+
+    code {
+      background: #f5f5f5;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      color: #e83e8c;
+    }
+
+    .command {
+      background: #2d2d2d;
+      color: #f8f8f2;
+      padding: 15px;
+      border-radius: 6px;
+      font-family: 'Courier New', monospace;
+      margin: 10px 0;
+      overflow-x: auto;
+    }
+
+    .badge {
+      display: inline-block;
+      background: #28a745;
+      color: white;
+      padding: 4px 12px;
+      border-radius: 12px;
+      font-size: 12px;
+      font-weight: 600;
+      margin-left: 10px;
+    }
+
+    ul {
+      margin-left: 20px;
+      line-height: 1.8;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin: 20px 0;
+    }
+
+    .feature {
+      padding: 20px;
+      background: #f8f9fa;
+      border-radius: 8px;
+      text-align: center;
+    }
+
+    .feature-icon {
+      font-size: 40px;
+      margin-bottom: 10px;
+    }
+
+    .feature h4 {
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    .feature p {
+      color: #666;
+      font-size: 14px;
+    }
+
+    .warning {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+
+    .success {
+      background: #d4edda;
+      border-left: 4px solid #28a745;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>🤖 AI Search Enhancer</h1>
+      <p>Enhance your web searches with AI-powered summaries</p>
+    </div>
+
+    <div class="card">
+      <h2>📥 Install Bookmarklet</h2>
+      <p style="color: #666; margin-bottom: 20px;">Drag this button to your bookmarks bar to install:</p>
+
+      <div class="bookmarklet-box">
+        <a href="javascript:(function()%7B'use%20strict'%3Bconst%20API_URL%3D'http%3A%2F%2Flocalhost%3A5000'%3Bfunction%20detectEngine()%7Bconst%20hostname%3Dwindow.location.hostname%3Bif(hostname.includes('google.com'))return'google'%3Bif(hostname.includes('bing.com'))return'bing'%3Bif(hostname.includes('duckduckgo.com'))return'duckduckgo'%3Breturn'unknown'%7Dfunction%20extractQuery()%7Bconst%20url%3Dnew%20URL(window.location.href)%3Breturn%20url.searchParams.get('q')%7C%7Curl.searchParams.get('query')%7C%7C''%7Dfunction%20scrapeGoogle()%7Bconst%20results%3D%5B%5D%3Bconst%20items%3Ddocument.querySelectorAll('div.g%2C%20div%5Bdata-hveid%5D')%3Bitems.forEach(item%3D%3E%7Bconst%20titleEl%3Ditem.querySelector('h3')%3Bconst%20linkEl%3Ditem.querySelector('a')%3Bconst%20snippetEl%3Ditem.querySelector('div%5Bdata-sncf%5D%2C%20div.VwiC3b%2C%20span.st')%3Bif(titleEl%26%26linkEl%26%26snippetEl)%7Bresults.push(%7Btitle%3AtitleEl.textContent.trim()%2Curl%3AlinkEl.href%2Csnippet%3AsnippetEl.textContent.trim()%7D)%7D%7D)%3Breturn%20results.slice(0%2C10)%7Dfunction%20scrapeBing()%7Bconst%20results%3D%5B%5D%3Bconst%20items%3Ddocument.querySelectorAll('li.b_algo')%3Bitems.forEach(item%3D%3E%7Bconst%20titleEl%3Ditem.querySelector('h2%20a')%3Bconst%20snippetEl%3Ditem.querySelector('p%2C%20div.b_caption%20p')%3Bif(titleEl%26%26snippetEl)%7Bresults.push(%7Btitle%3AtitleEl.textContent.trim()%2Curl%3AtitleEl.href%2Csnippet%3AsnippetEl.textContent.trim()%7D)%7D%7D)%3Breturn%20results.slice(0%2C10)%7Dfunction%20scrapeDuckDuckGo()%7Bconst%20results%3D%5B%5D%3Bconst%20items%3Ddocument.querySelectorAll('article%5Bdata-testid%3D%22result%22%5D')%3Bitems.forEach(item%3D%3E%7Bconst%20titleEl%3Ditem.querySelector('h2%20a%2C%20%5Bdata-testid%3D%22result-title-a%22%5D')%3Bconst%20snippetEl%3Ditem.querySelector('%5Bdata-result%3D%22snippet%22%5D')%3Bif(titleEl%26%26snippetEl)%7Bresults.push(%7Btitle%3AtitleEl.textContent.trim()%2Curl%3AtitleEl.href%2Csnippet%3AsnippetEl.textContent.trim()%7D)%7D%7D)%3Breturn%20results.slice(0%2C10)%7Dfunction%20scrapeResults(engine)%7Bswitch(engine)%7Bcase'google'%3Areturn%20scrapeGoogle()%3Bcase'bing'%3Areturn%20scrapeBing()%3Bcase'duckduckgo'%3Areturn%20scrapeDuckDuckGo()%3Bdefault%3Areturn%5B%5D%7D%7Dasync%20function%20getSummary(query%2Cresults)%7Btry%7Bconst%20response%3Dawait%20fetch(%60%24%7BAPI_URL%7D%2Fsummarize%60%2C%7Bmethod%3A'POST'%2Cheaders%3A%7B'Content-Type'%3A'application%2Fjson'%7D%2Cbody%3AJSON.stringify(%7Bquery%2Cresults%7D)%7D)%3Breturn%20await%20response.json()%7Dcatch(error)%7Breturn%7Bsuccess%3Afalse%2Cerror%3Aerror.message%7D%7D%7Dfunction%20showUI(state%2Cdata%3D%7B%7D)%7Bconst%20existing%3Ddocument.getElementById('ai-search-overlay')%3Bif(existing)existing.remove()%3Bconst%20overlay%3Ddocument.createElement('div')%3Boverlay.id%3D'ai-search-overlay'%3Boverlay.style.cssText%3D%60position%3Afixed%3Btop%3A0%3Bleft%3A0%3Bright%3A0%3Bbottom%3A0%3Bbackground%3Argba(0%2C0%2C0%2C0.7)%3Bz-index%3A999999%3Bdisplay%3Aflex%3Balign-items%3Acenter%3Bjustify-content%3Acenter%3Bfont-family%3A-apple-system%2CBlinkMacSystemFont%2C%22Segoe%20UI%22%2CRoboto%2Csans-serif%3Bbackdrop-filter%3Ablur(4px)%60%3Bconst%20modal%3Ddocument.createElement('div')%3Bmodal.style.cssText%3D%60background%3Awhite%3Bborder-radius%3A16px%3Bwidth%3A700px%3Bmax-width%3A90%25%3Bmax-height%3A80vh%3Boverflow%3Ahidden%3Bbox-shadow%3A0%2020px%2060px%20rgba(0%2C0%2C0%2C0.3)%3Bdisplay%3Aflex%3Bflex-direction%3Acolumn%60%3Bconst%20header%3Ddocument.createElement('div')%3Bheader.style.cssText%3D%60padding%3A24px%3Bborder-bottom%3A1px%20solid%20%23e0e0e0%3Bdisplay%3Aflex%3Bjustify-content%3Aspace-between%3Balign-items%3Acenter%3Bbackground%3Alinear-gradient(135deg%2C%23667eea%200%25%2C%23764ba2%20100%25)%3Bcolor%3Awhite%60%3Bconst%20title%3Ddocument.createElement('h2')%3Btitle.textContent%3D'%F0%9F%A4%96%20AI%20Search%20Summary'%3Btitle.style.cssText%3D'margin%3A0%3Bfont-size%3A24px%3Bfont-weight%3A600'%3Bconst%20closeBtn%3Ddocument.createElement('button')%3BcloseBtn.textContent%3D'%C3%97'%3BcloseBtn.style.cssText%3D%60background%3Anone%3Bborder%3Anone%3Bcolor%3Awhite%3Bfont-size%3A32px%3Bcursor%3Apointer%3Bpadding%3A0%3Bwidth%3A32px%3Bheight%3A32px%3Bline-height%3A32px%3Bopacity%3A0.8%3Btransition%3Aopacity%200.2s%60%3BcloseBtn.onmouseover%3D()%3D%3EcloseBtn.style.opacity%3D'1'%3BcloseBtn.onmouseout%3D()%3D%3EcloseBtn.style.opacity%3D'0.8'%3BcloseBtn.onclick%3D()%3D%3Eoverlay.remove()%3Bheader.appendChild(title)%3Bheader.appendChild(closeBtn)%3Bconst%20content%3Ddocument.createElement('div')%3Bcontent.style.cssText%3D%60padding%3A24px%3Boverflow-y%3Aauto%3Bflex%3A1%60%3Bif(state%3D%3D%3D'loading')%7Bcontent.innerHTML%3D%60%3Cdiv%20style%3D%22text-align%3Acenter%3Bpadding%3A40px%22%3E%3Cdiv%20style%3D%22width%3A50px%3Bheight%3A50px%3Bborder%3A4px%20solid%20%23f3f3f3%3Bborder-top%3A4px%20solid%20%23667eea%3Bborder-radius%3A50%25%3Banimation%3Aspin%201s%20linear%20infinite%3Bmargin%3A0%20auto%2020px%22%3E%3C%2Fdiv%3E%3Cp%20style%3D%22color%3A%23666%3Bfont-size%3A16px%22%3EAnalyzing%20search%20results%20with%20AI...%3C%2Fp%3E%3C%2Fdiv%3E%3Cstyle%3E%40keyframes%20spin%7B0%25%7Btransform%3Arotate(0deg)%7D100%25%7Btransform%3Arotate(360deg)%7D%7D%3C%2Fstyle%3E%60%7Delse%20if(state%3D%3D%3D'error')%7Bcontent.innerHTML%3D%60%3Cdiv%20style%3D%22padding%3A20px%3Bbackground%3A%23fee%3Bborder-left%3A4px%20solid%20%23f44%3Bborder-radius%3A4px%22%3E%3Ch3%20style%3D%22margin%3A0%200%2010px%200%3Bcolor%3A%23c33%22%3E%E2%9D%8C%20Error%3C%2Fh3%3E%3Cp%20style%3D%22margin%3A0%3Bcolor%3A%23666%22%3E%24%7Bdata.error%7D%3C%2Fp%3E%3C%2Fdiv%3E%60%7Delse%20if(state%3D%3D%3D'success')%7Bconst%20queryInfo%3Ddocument.createElement('div')%3BqueryInfo.style.cssText%3D%60padding%3A12px%3Bbackground%3A%23f8f9fa%3Bborder-radius%3A8px%3Bmargin-bottom%3A20px%60%3BqueryInfo.innerHTML%3D%60%3Cdiv%20style%3D%22font-size%3A14px%3Bcolor%3A%23666%3Bmargin-bottom%3A4px%22%3ESearch%20Query%3A%3C%2Fdiv%3E%3Cdiv%20style%3D%22font-size%3A16px%3Bfont-weight%3A500%3Bcolor%3A%23333%22%3E%22%24%7Bdata.query%7D%22%3C%2Fdiv%3E%60%3Bconst%20summary%3Ddocument.createElement('div')%3Bsummary.style.cssText%3D%60line-height%3A1.8%3Bcolor%3A%23333%3Bfont-size%3A15px%60%3Bsummary.textContent%3Ddata.summary%3Bconst%20footer%3Ddocument.createElement('div')%3Bfooter.style.cssText%3D%60margin-top%3A20px%3Bpadding-top%3A16px%3Bborder-top%3A1px%20solid%20%23e0e0e0%3Bfont-size%3A13px%3Bcolor%3A%23999%3Bdisplay%3Aflex%3Bjustify-content%3Aspace-between%60%3Bfooter.innerHTML%3D%60%3Cspan%3E%F0%9F%93%8A%20Analyzed%20%24%7Bdata.num_results%7D%20results%3C%2Fspan%3E%3Cspan%3E%F0%9F%A4%96%20Model%3A%20%24%7Bdata.model%7D%3C%2Fspan%3E%60%3Bcontent.appendChild(queryInfo)%3Bcontent.appendChild(summary)%3Bcontent.appendChild(footer)%7Dmodal.appendChild(header)%3Bmodal.appendChild(content)%3Boverlay.appendChild(modal)%3Bdocument.body.appendChild(overlay)%3Boverlay.onclick%3D(e)%3D%3E%7Bif(e.target%3D%3D%3Doverlay)overlay.remove()%7D%3Bconst%20handleEscape%3D(e)%3D%3E%7Bif(e.key%3D%3D%3D'Escape')%7Boverlay.remove()%3Bdocument.removeEventListener('keydown'%2ChandleEscape)%7D%7D%3Bdocument.addEventListener('keydown'%2ChandleEscape)%7Dasync%20function%20main()%7Bconst%20engine%3DdetectEngine()%3Bif(engine%3D%3D%3D'unknown')%7BshowUI('error'%2C%7Berror%3A'Unsupported%20search%20engine.%20This%20bookmarklet%20works%20with%20Google%2C%20Bing%2C%20and%20DuckDuckGo.'%7D)%3Breturn%7Dconst%20query%3DextractQuery()%3Bif(!query)%7BshowUI('error'%2C%7Berror%3A'Could%20not%20detect%20search%20query.%20Make%20sure%20you%20are%20on%20a%20search%20results%20page.'%7D)%3Breturn%7Dconst%20results%3DscrapeResults(engine)%3Bif(results.length%3D%3D%3D0)%7BshowUI('error'%2C%7Berror%3A'Could%20not%20extract%20search%20results.%20The%20page%20structure%20may%20have%20changed.'%7D)%3Breturn%7DshowUI('loading')%3Bconst%20response%3Dawait%20getSummary(query%2Cresults)%3Bif(response.success)%7BshowUI('success'%2Cresponse)%7Delse%7BshowUI('error'%2Cresponse)%7D%7Dmain()%7D)()" class="bookmarklet-link">
+          🤖 AI Summarize
+        </a>
+        <div class="instruction">
+          ⬆️ Drag this button to your bookmarks bar
+        </div>
+      </div>
+
+      <div class="warning">
+        <strong>⚠️ Important:</strong> The proxy server must be running on <code>localhost:5000</code> and Ollama must be installed for this to work.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🚀 Quick Start</h2>
+
+      <div class="step">
+        <h4>Step 1: Install Ollama</h4>
+        <p>Download and install Ollama from <a href="https://ollama.ai" target="_blank">ollama.ai</a></p>
+        <div class="command">curl -fsSL https://ollama.com/install.sh | sh</div>
+      </div>
+
+      <div class="step">
+        <h4>Step 2: Pull a Model</h4>
+        <p>Download a lightweight model (recommended: llama3.2:3b)</p>
+        <div class="command">ollama pull llama3.2:3b</div>
+      </div>
+
+      <div class="step">
+        <h4>Step 3: Start Ollama</h4>
+        <p>Start the Ollama service</p>
+        <div class="command">ollama serve</div>
+      </div>
+
+      <div class="step">
+        <h4>Step 4: Install Dependencies</h4>
+        <p>Install Python dependencies for the proxy server</p>
+        <div class="command">pip install -r requirements.txt</div>
+      </div>
+
+      <div class="step">
+        <h4>Step 5: Start Proxy Server</h4>
+        <p>Run the Flask server</p>
+        <div class="command">cd ai-search-enhancer<br>python src/server.py</div>
+      </div>
+
+      <div class="step">
+        <h4>Step 6: Install Bookmarklet</h4>
+        <p>Drag the "AI Summarize" button above to your bookmarks bar</p>
+      </div>
+
+      <div class="success">
+        <strong>✅ You're ready!</strong> Search on Google/Bing/DuckDuckGo and click the bookmarklet to get AI summaries.
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>✨ Features</h2>
+      <div class="feature-grid">
+        <div class="feature">
+          <div class="feature-icon">🔍</div>
+          <h4>Multi-Engine Support</h4>
+          <p>Works with Google, Bing, and DuckDuckGo</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🤖</div>
+          <h4>AI-Powered</h4>
+          <p>Uses local Ollama models for summaries</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">🔒</div>
+          <h4>Privacy First</h4>
+          <p>All processing happens locally</p>
+        </div>
+        <div class="feature">
+          <div class="feature-icon">⚡</div>
+          <h4>Fast & Lightweight</h4>
+          <p>No heavy browser extensions needed</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🤔 Troubleshooting</h2>
+      <h3>Bookmarklet shows "Ollama not running" error</h3>
+      <p>Make sure Ollama is running:</p>
+      <div class="command">ollama serve</div>
+
+      <h3>Model not found error</h3>
+      <p>Pull the model first:</p>
+      <div class="command">ollama pull llama3.2:3b</div>
+
+      <h3>Bookmarklet doesn't work</h3>
+      <ul>
+        <li>Check that the proxy server is running on port 5000</li>
+        <li>Make sure you're on a search results page</li>
+        <li>Try with a different browser</li>
+        <li>Check browser console for errors (F12)</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>
