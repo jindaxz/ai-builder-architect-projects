@@ -27,15 +27,29 @@ def _validate_image(image_bytes: bytes) -> None:
 
 
 def _build_prompt(request: AnalyzeRequest) -> str:
-    modes = ", ".join(request.modes)
-    question_part = f"\nQuestion: {request.question}" if request.question else ""
-    return (
-        "You are a helpful vision assistant working on-device. "
-        "Provide grounded observations and keep hallucinations minimal.\n"
-        f"Requested modes: {modes}.\n"
-        "Describe the scene, list notable objects, and answer the user question if provided."
-        f"{question_part}"
-    )
+    """Build a prompt suitable for moondream and other vision models."""
+    # moondream works better with simple, direct prompts
+    if request.question:
+        # Convert question to a more compatible format
+        question = request.question.strip()
+        # If question contains "text" or "visible", rephrase to avoid empty responses
+        if any(word in question.lower() for word in ["text", "visible", "read", "say"]):
+            # Rephrase OCR-like questions to be more descriptive
+            return f"Describe what you see in this image, including any text or writing."
+        # Otherwise use the question as-is, but ensure it ends properly
+        if not question.endswith((".", "!", "?")):
+            question += "."
+        return question
+    else:
+        # Default to a simple description request based on modes
+        if "ocr" in request.modes:
+            return "Describe what you see in this image, including any text or writing."
+        elif "qa" in request.modes:
+            return "What do you see in this image?"
+        elif "describe" in request.modes:
+            return "Describe this image in detail."
+        else:
+            return "Describe this image."
 
 
 def _guess_tags(summary: str, limit: int = 6) -> List[str]:
