@@ -1,0 +1,8 @@
+POST http://127.0.0.1:8810/api/v1/analyze
+Content-Type: application/json
+
+{
+  "image_base64": "<paste-base64>",
+  "question": "What is written on the sign?",
+  "modes": ["describe", "qa", "ocr"]
+}
